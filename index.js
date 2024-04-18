@@ -13,7 +13,12 @@ client.on('ready', () => {
 });
 
 client.on('qr', qr => {
-    qrcode.generate(qr, { small: true });
+    console.log(qr);
+    qrcode.generate(qr, { small: true }, (qrcode) => {
+        console.log(qrcode);
+        console.log('scan this qr');
+    });
+
 });
 
 
@@ -32,3 +37,5 @@ client.on('message_create', message => {
 
 
 client.initialize();
+
+console.log('Please wait initializing...');
