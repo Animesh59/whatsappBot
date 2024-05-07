@@ -38,6 +38,8 @@ client.on('message_create', message => {
 });
 
 
+client.sendMessage('8436627009@c.us','Hi from bot')
+
 client.initialize();
 
 console.log('Please wait initializing...');
