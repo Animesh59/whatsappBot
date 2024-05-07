@@ -1,5 +1,4 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
 
 const client = new Client({
     webVersionCache: {
@@ -14,24 +13,27 @@ client.on('ready', () => {
 
 client.on('qr', qr => {
     console.log(qr);
-    qrcode.generate(qr, { small: true }, (qrcode) => {
-        console.log(qrcode);
-        console.log('scan this qr');
-    });
-
 });
 
 
 // Listening to all incoming messages
 client.on('message_create', message => {
-    console.log(message.body)
+    m = message.body.toLowerCase();
 
-    if (message.body === '!ping') {
+    console.log(typeof m);
+    console.log(m);
+
+    if (m === 'ping') {
         message.reply('pong');
     }
 
-    if (message.body === 'Hi') {
-        message.reply('Animesh. Hari Bol');
+    if (m === 'hi') {
+        message.reply(`Hello I am Animesh's bot`);
+        message.reply(`How can I help you?`);
+    }
+
+    if (m === 'kirtan') {
+        message.reply('Hare Krishna Hare Krishna Krishna Krishna Hare Hare Hare Ram Hare Ram Ram Ram Hare Hare \n https://www.youtube.com/watch?v=r6WBtDnLxwM')
     }
 });
 
