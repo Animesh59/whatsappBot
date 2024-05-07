@@ -20,8 +20,8 @@ client.on('qr', qr => {
 client.on('message_create', message => {
     m = message.body.toLowerCase();
 
-    console.log(typeof m);
-    console.log(m);
+    // console.log(typeof m);
+    // console.log(m);
 
     if (m === 'ping') {
         message.reply('pong');
