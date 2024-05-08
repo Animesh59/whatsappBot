@@ -1,4 +1,4 @@
-const { Client, LocalAuth } = require('whatsapp-web.js');
+const { Client } = require('whatsapp-web.js');
 
 const client = new Client({
     webVersionCache: {
@@ -21,7 +21,9 @@ client.on('ready', () => {
     const chatId = number.substring(1) + "@c.us";
 
     // Sending message.
-    client.sendMessage(chatId, text);
+    client.sendMessage(chatId, text)
+        .then(() => `Successfully message sent to ${number}`)
+        .catch((err) => `Failed to send message\n${err}`);
 });
 
 client.on('qr', qr => {
