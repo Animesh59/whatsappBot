@@ -22,8 +22,8 @@ client.on('ready', () => {
 
     // Sending message.
     client.sendMessage(chatId, text)
-        .then(() => `Successfully message sent to ${number}`)
-        .catch((err) => `Failed to send message\n${err}`);
+        .then(() => console.log(`Successfully message sent to ${number}`))
+        .catch((err) => console.log(`Failed to send message\n${err}`));
 });
 
 client.on('qr', qr => {
