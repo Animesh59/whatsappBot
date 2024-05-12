@@ -1,43 +1,21 @@
-const { Client, LocalAuth } = require('whatsapp-web.js');
+//--------------------- Express routes for REST-APIs ---------------------
+const whatsapp = require("./whatsappLogic/logic")
+const express = require("express");
+const app = express();
+const PORT = 8080;
 
-const client = new Client({
-    webVersionCache: {
-        type: 'remote',
-        remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html',
-    }
+app.use((req, res, next) => {
+    console.log(`${req.method}: ${req.originalUrl}`);
+    next();
+})
+
+app.get("/", (req, res) => {
+    res.send(`<h1>Welcome to root page</h1>`);
 });
 
-client.on('ready', () => {
-    console.log('Client is ready!');
-});
+app.post("/send-whatsapp-message", express.json(), async (req, res) => {
+    await whatsapp.sendMessage(req.body.contact, req.body.message);
+    res.send('successfully sent messages');
+})
 
-client.on('qr', qr => {
-    console.log(qr);
-});
-
-
-// Listening to all incoming messages
-client.on('message_create', message => {
-    m = message.body.toLowerCase();
-
-    // console.log(typeof m);
-    // console.log(m);
-
-    if (m === 'ping') {
-        message.reply('pong');
-    }
-
-    if (m === 'hi') {
-        message.reply(`Hello I am Animesh's bot`);
-        message.reply(`How can I help you?`);
-    }
-
-    if (m === 'kirtan') {
-        message.reply('Hare Krishna Hare Krishna Krishna Krishna Hare Hare Hare Ram Hare Ram Ram Ram Hare Hare \n https://www.youtube.com/watch?v=r6WBtDnLxwM')
-    }
-});
-
-
-client.initialize();
-
-console.log('Please wait initializing...');
+app.listen(PORT, () => console.log(`server is running on: http://localhost:${PORT}`));

@@ -1,1 +1,5 @@
 node_modules
+temp
+.wwebjs_auth
+temp.json
+testing.js
