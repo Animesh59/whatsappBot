@@ -5,11 +5,13 @@
   "main": "main.js",
   "scripts": {
     "start": "node index",
-    "start2": "nodemon index"
+    "start2": "nodemon index",
+    "API": "nodemon ./routes/route"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.19.2",
     "nodemon": "^3.1.0",
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.23.0"
