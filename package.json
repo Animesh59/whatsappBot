@@ -5,8 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "node index",
-    "start2": "nodemon index",
-    "API": "nodemon ./routes/route"
+    "start2": "nodemon index"
   },
   "author": "",
   "license": "ISC",

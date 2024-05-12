@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 app.post("/send-whatsapp-message", express.json(), async (req, res) => {
     await whatsapp.sendMessage(req.body.contact, req.body.message);
-    res.send('successfully sent messages');
+    res.send(`successfully sent message to ${req.body.contact}`);
 })
 
 app.listen(PORT, () => console.log(`server is running on: http://localhost:${PORT}`));

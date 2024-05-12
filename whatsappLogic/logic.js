@@ -50,7 +50,10 @@ whatsapp.on("message_create", async (message) => {
 });
 
 whatsapp.initialize();
-console.log('Please wait initializing...');
+
+setTimeout(() => {
+    console.log('Please wait initializing...');
+}, 0);
 
 process.on('SIGINT', async () => {
     console.log('(SIGINT) Shutting down...');
